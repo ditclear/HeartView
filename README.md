@@ -1,5 +1,7 @@
 # HeartView
-自定义❤型view,屏幕上可随机出现 自动消失
+自定义❤型view,可自定义多种属性以及自动淡出动画效果 
+`custom ❤ view,auto exit with anim`
+
 
 ###ScreenShot
 
@@ -50,8 +52,36 @@ mHeartView = new HeartView(MainActivity.this)
         container.addView(mHeartView);
 
 ```
+###Method
+| Method 方法        | Des 描述           |  Default 默认值 |
+| ------------- |:-------------:| :----------:|
+| setSize(int size)      | view大小  | 2 |
+| setDuration(int duration)      | 动画时长      |  Math.abs(distance*4)|
+| setDistance(int distance) | 向上移动距离     |  300  |
+| setColor(int color)     | view颜色  | Color.Red |
+| setInterpolator(TimeInterpolator interpolator)      | 设置时间插值器  | 匀速   |
+| setTransAlpha(float fromAlpha,float toAlpha)      | 透明度变化  | 1.0f -> 0.0f |
+| setTransScale(float fromScale,float toScale)      | 大小变化  | 0.0f -> 1.0f |
+| showOnView(View view)      | 开启动画  | 最后调用 |
 
-###Contact me
+###About me
+  * Blog:http://vienan.github.io/
+  * E-mail:1940692836@qq.com  
+  * Location:成都软件园
 
-  >E-mail:1940692836@qq.com  
-  >Location:成都软件园
+###License
+```java
+Copyright (C) 2016 1940692836@qq.com 
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
