@@ -37,21 +37,17 @@
 
 ```java
   
-public class MainActivity extends AppCompatActivity {
+mHeartView = new HeartView(MainActivity.this)
+                .setColor(viewColor)        //颜色,default red
+                .setDistance(distance)      //向上移动距离,default 300
+                .setSize(viewSize)          //view大小,default 2
+                .setTransAlpha(1.0f, 0.0f)  //透明度变化,default 1.0f 0.0f
+                .setTransScale(0.0f, 1.0f)  //大小变化,default 0.0f 1.0f
+                .setDuration(2000)          //动画时长
+                .setInterpolator(new AccelerateInterpolator()) //设置时间插值器
+                .showOnView(v);             //最后调用，开启动画
 
-    private android.widget.RelativeLayout container;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        this.container = (RelativeLayout) findViewById(R.id.container);
-    }
-
-    void addHeart(View v){
-        container.addView(new HeartView(MainActivity.this));
-    }
-}
+        container.addView(mHeartView);
 
 ```
 
