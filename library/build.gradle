@@ -27,6 +27,6 @@ publish {
     groupId = 'com.ditclear'
     artifactId = 'heartview'
     publishVersion = '1.0.0'
-    desc = 'Oh hi, this is a nice description for a project, right?'
+    desc = 'custom ❤ view,auto exit with anim'
     website = 'https://github.com/viean/HeartView'
 }

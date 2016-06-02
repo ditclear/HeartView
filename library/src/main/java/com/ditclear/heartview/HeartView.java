@@ -104,7 +104,7 @@ public class HeartView extends View {
         return this;
     }
 
-    public static int px2dp(float pxValue,float scale){
+    private static int px2dp(float pxValue,float scale){
         return (int)(pxValue/scale+0.5f);
     }
 
@@ -130,7 +130,7 @@ public class HeartView extends View {
     }
 
     //create animator
-    ValueAnimator createAnimator(){
+    private ValueAnimator createAnimator(){
 
         PropertyValuesHolder fadeAnim = PropertyValuesHolder.ofFloat("alpha", fromAlpha,
                 toAlpha);
