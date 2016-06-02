@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 
 /**
  *
- * HeartView 自定义❤型view,可自定义多种属性以及自动淡出动画效果
+ * HeartView custom ❤ view,auto exit with anim
  *
  * Created by vienan on 16/5/31.
  */
@@ -48,16 +48,16 @@ public class HeartView extends View {
         mContext=context;
         size=2;
         mColor=Color.RED;
-        // 初始化画笔
+        // init paint
         paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(mColor);
         paint.setStyle(Paint.Style.FILL);
         paint.setStrokeWidth(2);
-        // 创建一个路径
+        // init path
         path = new Path();
 
-        //初始化anim属性
+        //int anim attr
         fromAlpha=1.0f;
         toAlpha=0.0f;
         fromScale=0.0f;
@@ -66,11 +66,7 @@ public class HeartView extends View {
 
     }
 
-    /**
-     * 显示在view之上，可任意view
-     * @param view
-     * @return
-     */
+    //show on view
     public HeartView showOnView(View view){
         this.px= (int) view.getX()+view.getWidth()/2;
         this.py= (int) view.getY();
@@ -78,11 +74,11 @@ public class HeartView extends View {
         setPivotY(this.py);
         if (mDuration==0){
             mDuration=Math.abs(mDistance*4);
-            Log.i("dur",""+mDuration);
+            Log.i("duration",""+mDuration);
             if (mAnim!=null) mAnim.setDuration(mDuration);
 
         }
-        //启动动画
+        //start anim
         onAnimationStart();
         return this;
     }
@@ -91,19 +87,19 @@ public class HeartView extends View {
 
     private HeartView randomShow(){
 
-        //获取屏幕宽高
+        //get screenWidth&&Height
         Resources resources = mContext.getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         int width = px2dp(dm.widthPixels,dm.density);
         int height = px2dp(dm.heightPixels,dm.density);
-        //随机位置
+        //random x&&y
 
         this.px=(int)(Math.random() * width);
         this.py=(int)(Math.random() * height);
 
         setPivotX(width/2);
         setPivotY(height/2);
-        //启动动画
+        //start anim
         onAnimationStart();
         return this;
     }
@@ -115,11 +111,11 @@ public class HeartView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        // 重置画板
+        // reset path
         path.reset();
-        // 路径的起始点
+        // start point
         path.moveTo(px, py - 5 * size);
-        // 根据心形函数画图
+        // draw heart
         for (double i = 0; i <= 2 * Math.PI; i += 0.001) {
             float x = (float) (16 * Math.sin(i) * Math.sin(i) * Math.sin(i));
             float y = (float) (13 * Math.cos(i) - 5 * Math.cos(2 * i) - 2 * Math.cos(3 * i) - Math.cos(4 * i));
@@ -133,7 +129,7 @@ public class HeartView extends View {
 
     }
 
-    //创建动画
+    //create animator
     ValueAnimator createAnimator(){
 
         PropertyValuesHolder fadeAnim = PropertyValuesHolder.ofFloat("alpha", fromAlpha,
@@ -147,7 +143,7 @@ public class HeartView extends View {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                //动画结束时移除
+                //remove heartView form parent
                 ViewGroup group= (ViewGroup) getParent();
                 if (group!=null)
                     group.removeView((View) ((ObjectAnimator)animation).getTarget());
@@ -169,52 +165,33 @@ public class HeartView extends View {
         mAnim.start();
 
     }
-    /**
-     * view大小,default 2
-     * @param size
-     * @return
-     */
+
+    //viewSize,default 2
     public HeartView setSize(int size) {
         this.size = size;
         return this;
     }
 
-    /**
-     * 动画时长
-     * @param duration
-     * @return
-     */
+    //anim duration
     public HeartView setDuration(int duration) {
         mDuration = duration;
         return this;
     }
 
-    /**
-     * 向上移动距离,default 300
-     * @param distance
-     * @return
-     */
+    //move distance,default 300
     public HeartView setDistance(int distance) {
         mDistance = distance;
         return this;
     }
 
-    /**
-     * 颜色,default red
-     * @param color
-     * @return
-     */
+     //view color,default red
     public HeartView setColor(int color) {
         mColor = color;
         paint.setColor(mColor);
         return this;
     }
 
-    /**
-     * 时间插值器
-     * @param interpolator
-     * @return
-     */
+    //timeInterpolator
     public HeartView setInterpolator(TimeInterpolator interpolator) {
         mInterpolator = interpolator;
         if (mAnim==null) mAnim=createAnimator();
@@ -222,24 +199,15 @@ public class HeartView extends View {
         return this;
     }
 
-    /**
-     * 透明度变化
-     * @param fromAlpha
-     * @param toAlpha
-     * @return
-     */
+    //alpha form -> to
     public HeartView setTransAlpha(float fromAlpha,float toAlpha) {
         this.fromAlpha = fromAlpha;
         this.toAlpha = toAlpha;
         return this;
     }
 
-    /**
-     * 大小变化
-     * @param fromScale
-     * @param toScale
-     * @return
-     */
+
+    //scale form -> to
     public HeartView setTransScale(float fromScale,float toScale) {
         this.fromScale = fromScale;
         this.toScale = toScale;
