@@ -1,8 +1,9 @@
 # HeartView
 自定义❤型view,可自定义多种属性以及自动淡出动画效果 
 `custom ❤ view,auto exit with anim`
+[http://blog.csdn.net/scuyttyuuy123/article/details/51570898](http://blog.csdn.net/scuyttyuuy123/article/details/51570898)
 
-**精简的建筑者模式实践**
+**精简的建筑者模式实践** [http://blog.csdn.net/scuyttyuuy123/article/details/51578874](http://blog.csdn.net/scuyttyuuy123/article/details/51578874)
 
 
 ###ScreenShot
