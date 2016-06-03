@@ -2,6 +2,8 @@
 自定义❤型view,可自定义多种属性以及自动淡出动画效果 
 `custom ❤ view,auto exit with anim`
 
+**精简的建筑者模式实践**
+
 
 ###ScreenShot
 
@@ -39,16 +41,15 @@
 
 ```java
   
-mHeartView = new HeartView(MainActivity.this)
+mHeartView = new HeartView.Builder(MainActivity.this)
                 .setColor(viewColor)        //颜色,default red
                 .setDistance(distance)      //向上移动距离,default 300
                 .setSize(viewSize)          //view大小,default 2
                 .setTransAlpha(1.0f, 0.0f)  //透明度变化,default 1.0f 0.0f
                 .setTransScale(0.0f, 1.0f)  //大小变化,default 0.0f 1.0f
                 .setDuration(2000)          //动画时长
-                .setInterpolator(new AccelerateInterpolator()) //设置时间插值器
-                .showOnView(v);             //最后调用，开启动画
-
+                .create()					
+                .showOnView(v);
         container.addView(mHeartView);
 
 ```
@@ -59,7 +60,6 @@ mHeartView = new HeartView(MainActivity.this)
 | setDuration(int duration)      | 动画时长      |  Math.abs(distance*4)|
 | setDistance(int distance) | 向上移动距离     |  300  |
 | setColor(int color)     | view颜色  | Color.Red |
-| setInterpolator(TimeInterpolator interpolator)      | 设置时间插值器  | 匀速   |
 | setTransAlpha(float fromAlpha,float toAlpha)      | 透明度变化  | 1.0f -> 0.0f |
 | setTransScale(float fromScale,float toScale)      | 大小变化  | 0.0f -> 1.0f |
 | showOnView(View view)      | 开启动画  | 最后调用 |
