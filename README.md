@@ -5,7 +5,21 @@
 
 **精简的建筑者模式实践** [http://blog.csdn.net/scuyttyuuy123/article/details/51578874](http://blog.csdn.net/scuyttyuuy123/article/details/51578874)
 
+###Installation
 
+gradle:
+
+    compile 'com.ditclear:heartview:1.0.0'
+
+maven:
+```java
+<dependency>
+  <groupId>com.ditclear</groupId>
+  <artifactId>heartview</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
 ###ScreenShot
 
 ![gif](https://github.com/vienan/HeartView/blob/master/screenshot.gif)
