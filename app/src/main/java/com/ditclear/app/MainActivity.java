@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     // add heartView
     void addHeart(final View v) {
 
-        mHeartView = new HeartView.Builder(MainActivity.this)
+        HeartView mHeartView = new HeartView.Builder(MainActivity.this)
                 .setColor(viewColor)        //颜色,default red
                 .setDistance(distance)      //向上移动距离,default 300
                 .setSize(viewSize)          //view大小,default 2

@@ -105,6 +105,12 @@ public class HeartView extends View {
 
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        if (mAnim.isRunning())mAnim.cancel();
+        super.onDetachedFromWindow();
+    }
+
 
     //timeInterpolator
 //    public HeartView setInterpolator(TimeInterpolator interpolator) {
